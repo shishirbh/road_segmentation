@@ -1,0 +1,18 @@
+python deeplab\datasets\build_voc2012_data.py --image_folder="C:\\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\\road_map\JPEGImages"  --semantic_segmentation_folder="C:\\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\\road_map\SegmentationClass" --list_folder="C:\\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\\road_map\ImageSets\Segmentation" --output_dir="C:\\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\\road_map\\tfrecord" --image_format="png" --label_format="png"
+
+
+python deeplab/train.py --logtostderr --training_number_of_steps=30000 --train_split="train" --model_variant="xception_65" --atrous_rates=6 --atrous_rates=12 --atrous_rates=18 --output_stride=16 --decoder_output_stride=4 --train_crop_size="513,513" --train_batch_size=3 --dataset="road_map" fine_tune_batch_norm=True --train_logdir="C:\\Users\\nbhas\Desktop\Shishir\models-master\research\deeplab\datasets\\road_map\\exp\\train" --dataset_dir="C:\\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\\road_map\\tfrecord" --tf_initial_checkpoint="C:\Users\\nbhas\Desktop\Shishir\models-master\\research\deeplab\datasets\pascal_voc_seg\exp\init_models\deeplabv3_pascal_train_aug\model.ckpt"
+
+
+python deeplab/train.py --logtostderr --training_number_of_steps=30000 --train_split="train" --model_variant="xception_65" --atrous_rates=6 --atrous_rates=12 --atrous_rates=18 --output_stride=16 --decoder_output_stride=4 --fine_tune_batch_norm --train_crop_size="513,513" --train_batch_size=1 --dataset="pascal_voc_seg"   --train_logdir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\train"  --dataset_dir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\tfrecord"
+
+
+python deeplab/eval.py --logtostderr --eval_split="val" --model_variant="xception_65" --atrous_rates=6 --atrous_rates=12 --atrous_rates=18 --output_stride=16 --decoder_output_stride=4 --eval_crop_size="1500,1500" --dataset="pascal_voc_seg" --checkpoint_dir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\train" --eval_logdir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\eval" --dataset_dir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\tfrecord"
+
+
+python deeplab/vis.py --logtostderr --vis_split="val" --model_variant="xception_65" --atrous_rates=6 --atrous_rates=1 --atrous_rates=18 --output_stride=16 --decoder_output_stride=4 --vis_crop_size="1500,1500" --checkpoint_dir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\train" --vis_logdir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\vis" --dataset_dir="C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\tfrecord" --max_number_of_iterations=1
+
+tensorboard --logdir "C:\\Users\\nbhas\\Desktop\\Shishir\\models-master\\research\\deeplab\\datasets\\pascal_voc_seg\\exp\\train_on_train_set\\train"
+
+
+python main.py "C:\\Users\\nbhas\Desktop\Shishir\DeepLabv3FineTuning\data"C:\\Users\\nbhas\\Desktop\\Shishir\\DeepLabv3FineTuning\\exp\\run_4_9quad"
